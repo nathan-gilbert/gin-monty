@@ -1,11 +1,9 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	"math/rand"
 	"net/http"
-	"time"
-
-	"github.com/gin-gonic/gin"
 )
 
 var quotes = []string{
@@ -17,9 +15,6 @@ var quotes = []string{
 }
 
 func main() {
-	// Set random seed for selecting random quotes
-	rand.Seed(time.Now().UnixNano())
-
 	// Create a default Gin router
 	router := gin.Default()
 
