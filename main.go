@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"math/rand"
 	"net/http"
+	"os"
 )
 
 var quotes = []string{
@@ -43,5 +45,10 @@ func main() {
 	})
 
 	// Start the server on port 8080
-	router.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Default port
+	}
+	hostPort := fmt.Sprintf("0.0.0.0:%s", port)
+	router.Run(hostPort)
 }
